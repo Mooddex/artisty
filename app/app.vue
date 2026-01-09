@@ -1,6 +1,14 @@
+<script setup></script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtPage />
-  </div>
-</template>
+  <main class="min-h-screen">
+     <UApp>
+   <UMain>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </UMain>
+  </UApp>
+  </main>
+ 
+</template>∆
