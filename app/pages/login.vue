@@ -3,5 +3,5 @@
 </script>
 
 <template>
- <LoginMain />
+ <AuthLoginMain />
 </template>

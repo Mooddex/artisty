@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as z from "zod";
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
-
+const { signIn } = useAuth();
 const fields: AuthFormField[] = [
   {
     name: "name",
@@ -30,17 +30,13 @@ const providers = [
   {
     label: "Google",
     icon: "i-simple-icons-google",
-    onClick: () => {
-      // Handle Google signup
+    onClick: async () => {
+       await signIn("google");
+      
+
     },
   },
-  {
-    label: "GitHub",
-    icon: "i-simple-icons-github",
-    onClick: () => {
-      // Handle GitHub signup
-    },
-  },
+ 
 ];
 
 const schema = z.object({
@@ -54,6 +50,8 @@ type Schema = z.output<typeof schema>;
 function onSubmit(payload: FormSubmitEvent<Schema>) {
   console.log("Signup submitted", payload.data);
   // Handle signup logic here
+  const user = payload.data ;
+  console.log(user);
 }
 </script>
 

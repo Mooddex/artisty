@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
+
+// const {signOut , status} = useAuth();
+// const loggedin = status.value
 const route = useRoute()
 
 const items = computed<NavigationMenuItem[]>(() => [{
@@ -19,7 +22,13 @@ const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Auctions',
   to: 'auctions',
   active: route.path.startsWith('/auctions')
-}])
+},
+]);
+
+// async function  handlesignout(){
+//   signOut();
+// console.log('signned out')
+// }
 </script>
 
 <template>
@@ -28,7 +37,12 @@ const items = computed<NavigationMenuItem[]>(() => [{
       <!-- <template>
         <Logo class="h-6 w-auto" />
       </template> -->
-
+<!--       
+<div v-show="loggedin==='authenticated'">
+  <button @click="handlesignout">
+    Sign out 
+  </button>
+</div> -->
       <UNavigationMenu :items="items" />
 
       <template #right>

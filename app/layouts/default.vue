@@ -7,10 +7,10 @@
 
 <template >
     <div>
-        <NavbarMain />
+        <CommonNavbarMain />
         <main class="grow">
             <slot />
         </main>
-       <FooterMain />
+       <CommonFooterMain />
     </div>
 </template>
