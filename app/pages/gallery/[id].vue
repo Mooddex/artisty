@@ -1,5 +1,4 @@
 <script setup>
-import DOMPurify from 'dompurify';
 
 const route = useRoute();
 const store = useArtStore();
@@ -15,7 +14,6 @@ const getImageUrl = (imageId) =>
     : "https://via.placeholder.com/300x400?text=No+Image";
 
 // sanitize HTML content
-const sanitizeHtml = (html) => DOMPurify.sanitize(html);
 
 </script>
 

@@ -14,9 +14,7 @@ export const useArtStore = defineStore("artStore", {
   },
 
   actions: {
-    // ======================
-    // Fetch list of artworks
-    // ======================
+   
     async getArt({ page = 1, limit = 20 } = {}) {
       this.isLoading = true;
       this.error = null;
@@ -37,9 +35,7 @@ export const useArtStore = defineStore("artStore", {
       }
     },
 
-    // ======================
-    // Fetch single artwork
-    // ======================
+ 
     async getSingleArt(id:string | number) {
       this.isLoading = true;
       this.error = null;
@@ -59,5 +55,8 @@ export const useArtStore = defineStore("artStore", {
         this.isLoading = false;
       }
     },
+    async searchArt(){
+      
+    }
   },
 });

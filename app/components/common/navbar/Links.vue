@@ -1,6 +1,6 @@
 <script setup>
 
-  const {isLoggedIn, signOut} = useAuth();
+  const {isLoggedIn, signOut} = useAuthStore();
 </script>
 
 <template>
@@ -18,13 +18,13 @@
     >
       <NuxtLink
         class="text-sm font-medium hover:text-primary transition-colors"
-        href="/gallery"
-        >sign up</NuxtLink
+        href="/signup"
+        >Sign up</NuxtLink
       >
       <NuxtLink
         class="text-sm font-medium hover:text-primary transition-colors"
-        href="/auctions"
-        >sign in</NuxtLink
+        href="/login"
+        >Log in</NuxtLink
       >
     </div>
     <div 
@@ -32,7 +32,7 @@
     class="hidden lg:flex items-center gap-8">
        <NuxtLink
         class="text-sm font-medium hover:text-primary transition-colors"
-        href="artist/all"
+        href="artists"
         >Artists</NuxtLink
       >
      
@@ -42,7 +42,7 @@
         >Auctions</NuxtLink
       >
       <button
-        class=" cursor-pointer text-sm font-medium hover:text-primary transition-colors"
+        class=" cursor-pointer text-rose-500 text-sm font-medium hover:text-primary transition-colors"
         @click="signOut"
         >Sign out</button
       >

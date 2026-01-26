@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import * as z from "zod";
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
-import { signIn } from "@/lib/auth-client.js";
 
 //-------
+const {signInWithGoogle} = useAuthStore();
 const fields: AuthFormField[] = [
   {
     name: "name",
@@ -32,10 +32,8 @@ const providers = [
   {
     label: "Google",
     icon: "i-simple-icons-google",
-    onClick: async () => {
-	await signIn();
-    console.log('signin with google provider')
-  },
+     onClick: async () => await signInWithGoogle(),
+
   },
  
 ];
