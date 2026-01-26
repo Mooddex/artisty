@@ -24,7 +24,7 @@ const fields: AuthFormField[] = [{
 const providers = [{
   label: 'Google',
   icon: 'i-simple-icons-google',
-  onClick:async () => await signInWithGoogle(),
+  onClick: () => signInWithGoogle(),
 }
 ]
 

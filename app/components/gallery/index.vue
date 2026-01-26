@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ArtsGrid from '@/components/arts/Grid.vue';
+
+
 </script>
 
 <template class="bg-background-light dark:bg-background-dark font-display text-[#1c0d0d] dark:text-white transition-colors duration-200">

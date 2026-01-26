@@ -10,10 +10,9 @@ const getImageUrl = (imageId) =>
 <template>
   <RouterLink :to="`/gallery/${art.id}`">
     <div
-      class="group flex flex-col gap-4 bg-white dark:bg-[#2a1212] rounded-xl p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      class="group flex flex-col gap-4 bg-white dark:bg-[#2a1212] rounded-xl p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full"
     >
-      <div class="relative aspect-4/5 overflow-hidden rounded-lg w-full">
-        <!-- Replaced the old static URL with actual artwork image -->
+      <div class="relative aspect-4/5 overflow-hidden rounded-lg w-full flex-1">
         <div
           class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
           :style="{ backgroundImage: `url(${getImageUrl(art.image_id)})` }"
@@ -31,7 +30,7 @@ const getImageUrl = (imageId) =>
           <p class="text-xs font-bold text-white tracking-wide">12h left</p>
         </div>
       </div>
-      <div class="flex flex-col gap-3 px-1 pb-1">
+      <div class="flex flex-col gap-3 px-1 pb-1 ">
         <div class="flex justify-between items-start">
           <div>
             <h3

@@ -8,12 +8,12 @@ const items = computed(() => {
         {
           label: "Sign In",
           icon: "i-lucide-log-in",
-          to: "/auth/signin",
+          to: "/login",
         },
         {
           label: "Sign Up",
           icon: "i-lucide-user-plus",
-          to: "/auth/signup",
+          to: "/signup",
         },
       ],
       [
