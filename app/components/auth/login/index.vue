@@ -2,8 +2,7 @@
 import * as z from 'zod'
 import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui'
 
-const toast = useToast()
-
+const {signInWithGoogle} = useAuthStore();
 const fields: AuthFormField[] = [{
   name: 'email',
   type: 'email',
@@ -25,10 +24,8 @@ const fields: AuthFormField[] = [{
 const providers = [{
   label: 'Google',
   icon: 'i-simple-icons-google',
-  onClick: () => {
-    toast.add({ title: 'Google', description: 'Login with Google' })
-  }
-}, 
+  onClick: () => signInWithGoogle(),
+}
 ]
 
 const schema = z.object({
@@ -58,4 +55,3 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
     </UPageCard>
   </div>
 </template>
-

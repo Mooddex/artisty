@@ -3,5 +3,7 @@
 </script>
 
 <template>
- <AuthLogin />
+  <div>
+    artist id            
+  </div>
 </template>

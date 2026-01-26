@@ -10,9 +10,17 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/ui",
     "@pinia/nuxt",
+    "nuxt-mongoose",
   ],
-
   vite: {
     plugins: [tailwindcss()],
   },
+  mongoose: {
+    uri: process.env.MONGODB_URI,
+    options: {},
+    modelsDir: 'models',
+    devtools: true,
+  },
+  
+ 
 });

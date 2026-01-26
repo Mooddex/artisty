@@ -3,5 +3,7 @@
 </script>
 
 <template>
- <AuthLogin />
+  <div>
+<Profile />
+  </div>
 </template>

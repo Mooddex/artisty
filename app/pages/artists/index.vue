@@ -1,7 +1,9 @@
 <script setup>
-
+  
 </script>
 
 <template>
- <AuthLogin />
+  <div >
+all artists
+  </div>
 </template>
