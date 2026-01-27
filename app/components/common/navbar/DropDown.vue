@@ -71,7 +71,7 @@ const items = computed(() => {
       {
         label: "Sign out",
         icon: "i-lucide-log-out",
-        click: () => signOut(),
+        click: () => signOut,
       },
     ],
   ];

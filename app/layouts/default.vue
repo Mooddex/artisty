@@ -1,16 +1,11 @@
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-
-</script>
-
-
-
-<template >
-    <div>
-        <CommonNavbar />
-        <main class="grow">
-            <slot />
-        </main>
-       <CommonFooterMain />
-    </div>
+<template>
+  <div>
+    <CommonNavbar />
+    <main class="grow">
+      <slot />
+    </main>
+    <CommonFooterMain />
+  </div>
 </template>
