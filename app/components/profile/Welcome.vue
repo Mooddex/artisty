@@ -1,5 +1,5 @@
 <script setup>
-const { user, isLoggedIn } = useAuthStore();
+const { user, isLoggedIn } = useAuth();
 
 </script>
 

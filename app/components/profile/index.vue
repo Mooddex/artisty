@@ -1,6 +1,6 @@
 <script setup>
 
-const { user } = useAuthStore();
+const { user } = useAuth();
 
 </script>
 

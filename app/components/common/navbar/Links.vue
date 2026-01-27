@@ -1,6 +1,6 @@
 <script setup>
 
-  const {isLoggedIn, signOut} = useAuthStore();
+  const {isLoggedIn, signOut} = useAuth();
 </script>
 
 <template>

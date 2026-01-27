@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { user, isLoggedIn, signOut } = useAuthStore();
+const { user, isLoggedIn, signOut } = useAuth();
 
 const items = computed(() => {
   if (!isLoggedIn) {
@@ -29,9 +29,9 @@ const items = computed(() => {
   return [
     [
       {
-        label: user?.name || "Guest",
+        label: user?.value?.name || "Guest",
         avatar: {
-          src: user?.image || "https://github.com/benjamincanac.png",
+          src: user?.value?.image || "https://github.com/benjamincanac.png",
         },
         type: "label",
       },

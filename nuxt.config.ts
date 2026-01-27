@@ -21,6 +21,6 @@ export default defineNuxtConfig({
     modelsDir: 'models',
     devtools: true,
   },
-  
+  ssr: false,
  
 });

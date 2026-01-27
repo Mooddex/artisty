@@ -2,7 +2,7 @@
 import * as z from 'zod'
 import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui'
 
-const {signInWithGoogle} = useAuthStore();
+const {signInWithGoogle} = useAuth();
 const fields: AuthFormField[] = [{
   name: 'email',
   type: 'email',

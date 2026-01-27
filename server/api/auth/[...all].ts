@@ -1,7 +1,5 @@
-import { createAuth } from '@/utils/auth';
+import { auth } from "~/utils/auth"; // path to your auth file
 
-export default defineEventHandler(async (event) => {
-  const auth = await createAuth();
-  return auth.handler(toWebRequest(event));
+export default defineEventHandler((event) => {
+    return auth.handler(toWebRequest(event));
 });
-
