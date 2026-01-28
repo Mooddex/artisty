@@ -38,6 +38,11 @@ export const useArtStore = defineStore("artStore", () => {
   }
 
   async function getSingleArt(id: number | string): Promise<void> {
+    if (!id) {
+      error.value = "Invalid ID";
+      return;
+    }
+
     isLoading.value = true;
     error.value = null;
     art.value = null;

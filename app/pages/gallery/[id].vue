@@ -1,12 +1,12 @@
 <script setup>
+import { storeToRefs } from 'pinia';
+import { Icon } from "@iconify/vue";
 
 const route = useRoute();
 const store = useArtStore();
-const art = ref(null);
-const isLoading = ref(false);
-const error = ref(null);
+const { art, isLoading, error } = storeToRefs(store);
 
-store.getSingleArt.apply(route.params.id)
+store.getSingleArt(route.params.id);
 // helper to get image URL
 const getImageUrl = (imageId) =>
   imageId
@@ -14,6 +14,9 @@ const getImageUrl = (imageId) =>
     : "https://via.placeholder.com/300x400?text=No+Image";
 
 // sanitize HTML content
+const sanitizeHtml = (html) => {
+  return html;
+};
 
 </script>
 
@@ -67,15 +70,25 @@ const getImageUrl = (imageId) =>
           </p>
         </div>
 
-        <div class="mt-6">
+        <div class="mt-6 flex items-center gap-3">
           <button
-            class="px-6 py-3 rounded-lg bg-primary/20 hover:bg-primary text-[#1c0d0d] font-bold transition-colors"
+            class="px-6 py-3 rounded-lg bg-primary/20  hover:bg-gray-400 light:text-black font-bold transition-colors  "
           >
-            Place Bid - 0.85 ETH
+            Share with friends
+          </button>
+          
+          <button
+            class="flex items-center justify-center size-9 rounded-full  bg-white text-black light:bg-black light:text-white hover:text-red-600 hover:bg-red-300 transition-all"
+          >
+            <Icon
+                icon="mynaui:heart-solid"
+                width="24"
+                height="24"
+                
+            />
           </button>
         </div>
       </div>
     </div>
-    <div v-else class="text-center text-gray-500">Artwork not found.</div>
   </div>
 </template>
