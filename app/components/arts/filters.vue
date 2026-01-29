@@ -1,26 +1,42 @@
 <script setup>
 
+//which item is active by default and the state for the rest.
+const activeIndex = ref(0);
+// the array of items / btns that will be activated 
+const filters = [
+  "All",
+  "Painting",
+  "Photography",
+  "Digital Art",
+  "Sculpture",
+  "AI Generated",
+];
+//function for the @click to activate the chosen btn
+const setActive = (index) => {
+  activeIndex.value = index;
+};
+//the styling change for the items (before and after )
+const btnClass = (index) => {
+  return activeIndex.value === index
+    ? "bg-black dark:bg-white text-white dark:text-[#1c0d0d]"
+    : "bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d]";
+};
+
 </script>
 
 <template>
-<div class="flex overflow-x-auto pb-2 scrollbar-hide gap-3">
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#1c0d0d] dark:bg-white px-6 transition-transform active:scale-95">
-<p class="text-white dark:text-[#1c0d0d] text-sm font-bold">All</p>
-</button>
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d] px-6 transition-colors">
-<p class="text-sm font-medium">Painting</p>
-</button>
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d] px-6 transition-colors">
-<p class="text-sm font-medium">Photography</p>
-</button>
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d] px-6 transition-colors">
-<p class="text-sm font-medium">Digital Art</p>
-</button>
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d] px-6 transition-colors">
-<p class="text-sm font-medium">Sculpture</p>
-</button>
-<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f4e7e7] dark:bg-[#3a1d1d] hover:bg-[#eadddd] dark:hover:bg-[#4a2d2d] px-6 transition-colors">
-<p class="text-sm font-medium">AI Generated</p>
-</button>
-</div>
+  <div class="flex gap-3 overflow-x-auto">
+    <button
+      v-for="(filter, index) in filters"
+      :key="filter"
+      :class="[
+        btnClass(index),
+        'h-10 rounded-lg px-6 transition-colors active:scale-95'
+      ]"
+      @click="setActive(index)"
+    >
+      {{ filter }}
+    </button>
+  </div>
 </template>
+
