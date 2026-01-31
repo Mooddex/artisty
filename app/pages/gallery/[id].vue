@@ -1,12 +1,12 @@
 <script setup>
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 
 const route = useRoute();
 const store = useArtStore();
 const { art, isLoading, error } = storeToRefs(store);
 const url = useRequestURL();
 
- await store.getSingleArt(route.params.id);
+await store.getSingleArt(route.params.id);
 // helper to get image URL
 const getImageUrl = (imageId) =>
   imageId
@@ -18,12 +18,18 @@ const sanitizeHtml = (html) => {
   return html;
 };
 useSeoMeta({
-  title: () => art.value?.title || 'Art Gallery',
-  ogTitle: () => art.value?.title || 'Art Gallery',
-  ogImage: () => art.value?.image_id ? getImageUrl(art.value.image_id) : `${url.origin}/default-image.jpg`,
-  twitterImage: () => art.value?.image_id ? getImageUrl(art.value.image_id) : `${url.origin}/default-image.jpg`,
+  title: () => art.value?.title || "Art Gallery",
+  ogTitle: () => art.value?.title || "Art Gallery",
+  ogImage: () =>
+    art.value?.image_id
+      ? getImageUrl(art.value.image_id)
+      : `${url.origin}/default-image.jpg`,
+  twitterImage: () =>
+    art.value?.image_id
+      ? getImageUrl(art.value.image_id)
+      : `${url.origin}/default-image.jpg`,
   ogUrl: `${url.origin}/gallery/${route.params.id}`,
-  twitterCard: 'summary_large_image'
+  twitterCard: "summary_large_image",
 });
 </script>
 
@@ -43,7 +49,7 @@ useSeoMeta({
           class="w-full h-auto rounded-lg shadow-lg"
         />
       </div>
-  <!-- eslint-disable-next-line vue/no-v-html -->
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <!-- Info section -->
       <div class="flex-1 flex flex-col gap-4">
         <h1 class="text-2xl font-bold">{{ art.title }}</h1>
@@ -78,17 +84,13 @@ useSeoMeta({
         </div>
 
         <div class="mt-6 flex items-center gap-3">
-         
-           <SocialShare
-  v-for="network in ['facebook', 'x', 'linkedin', 'email']"
-  :key="network"
-  :network="network"
-  :styled="true"
-  class="m-3 p-2 rounded-2xl text-black  bg-red-300 hover:bg-red-500 "
-/>
-
-          
-        
+          <SocialShare
+            v-for="network in ['facebook', 'x', 'linkedin', 'email']"
+            :key="network"
+            :network="network"
+            :styled="true"
+            class="m-3 p-2 rounded-2xl text-black bg-red-300 hover:bg-red-500"
+          />
         </div>
       </div>
     </div>
