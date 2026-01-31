@@ -1,33 +1,16 @@
-<script setup lang="ts">
-const links = ref([
-  {
-    label: "Start Selling",
-    to: "/signup",
-    color: "ghost",
-    variant: "solid",
-    icon: "i-lucide-square-play",
-  },
-  {
-    label: "Start Bidding",
-    to: "/gallery",
-    color: "neutral",
-    variant: "soft",
-    trailingIcon: "i-lucide-arrow-right",
-  },
-]);
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <UPageHero
-    title="Where Creativity Meets Opportunity"
-    description="  The premier marketplace for discovering unique art and connecting with visionary creators. Whether you're collecting or creating, find your place here."
+    title="Where Creativity Meets Admiration"
+    description="  The premier place for discovering unique art and discovering  visionary artists."
     orientation="horizontal"
-    :links="links"
   >
     <NuxtImg
       src="/hero.jpg"
       alt="App screenshot"
       class="rounded-lg shadow-2xl ring ring-default"
+      loading="lazy"
     />
   </UPageHero>
 </template>

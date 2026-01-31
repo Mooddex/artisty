@@ -63,26 +63,6 @@ export const useArtStore = defineStore("artStore", () => {
     }
   }
 
-  async function filterArts(filter:string) {
-    if(!filter){
-        error.value = "invalid Category"
-        return;
-    }
-    isLoading.value = true;
-    error.value = null;
-    arts.value = [];
-    try {
-      const res = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${filter}`)
-      const data: { data: Art[] } = await res.json()
-      arts.value = data.data
-
-    }catch (err) {
-      console.error(err);
-      error.value = "Failed to fetch Category";
-    } finally {
-      isLoading.value = false;
-    }
-  }
 
 
   return {
@@ -94,6 +74,5 @@ export const useArtStore = defineStore("artStore", () => {
     totalCount,
     getArt,
     getSingleArt,
-    filterArts,
   };
 });

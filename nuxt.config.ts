@@ -3,7 +3,13 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
   css: ["./app/assets/css/main.css"],
   modules: [
     "@nuxt/eslint",
@@ -11,6 +17,9 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@pinia/nuxt",
     "nuxt-mongoose",
+    "@stefanobartoletti/nuxt-social-share",
+    '@nuxt/fonts',
+    
   ],
   vite: {
     plugins: [tailwindcss()],
@@ -21,6 +30,9 @@ export default defineNuxtConfig({
     modelsDir: 'models',
     devtools: true,
   },
-  ssr: false,
+   socialShare: {
+    baseUrl: 'http://localhost:3000' // required!
+    // other optional module options
+  }
  
 });

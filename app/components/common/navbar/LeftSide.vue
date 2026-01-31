@@ -11,10 +11,11 @@
       to="/"
       class="flex items-center gap-2 cursor-pointer"
       >
-         <img 
-        src="/logo.jpeg" 
+         <NuxtImg 
+        src="/logo.jpg" 
         alt="Logo" 
         class="size-8" 
+        
         />
           <!-- Name -->
         <h2
@@ -26,7 +27,6 @@
        
       </div>
       <!-- search -->
-     <CommonSearch />
     </div>
   </div>
 </template>
