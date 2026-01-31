@@ -1,12 +1,12 @@
 <script setup>
 import { storeToRefs } from 'pinia';
-import { Icon } from "@iconify/vue";
 
 const route = useRoute();
 const store = useArtStore();
 const { art, isLoading, error } = storeToRefs(store);
+const url = useRequestURL();
 
-store.getSingleArt(route.params.id);
+ await store.getSingleArt(route.params.id);
 // helper to get image URL
 const getImageUrl = (imageId) =>
   imageId
@@ -17,7 +17,14 @@ const getImageUrl = (imageId) =>
 const sanitizeHtml = (html) => {
   return html;
 };
-
+useSeoMeta({
+  title: () => art.value?.title || 'Art Gallery',
+  ogTitle: () => art.value?.title || 'Art Gallery',
+  ogImage: () => art.value?.image_id ? getImageUrl(art.value.image_id) : `${url.origin}/default-image.jpg`,
+  twitterImage: () => art.value?.image_id ? getImageUrl(art.value.image_id) : `${url.origin}/default-image.jpg`,
+  ogUrl: `${url.origin}/gallery/${route.params.id}`,
+  twitterCard: 'summary_large_image'
+});
 </script>
 
 <template>
@@ -71,22 +78,17 @@ const sanitizeHtml = (html) => {
         </div>
 
         <div class="mt-6 flex items-center gap-3">
-          <button
-            class="px-6 py-3 rounded-lg bg-primary/20  hover:bg-gray-400 light:text-black font-bold transition-colors  "
-          >
-            Share with friends
-          </button>
+         
+           <SocialShare
+  v-for="network in ['facebook', 'x', 'linkedin', 'email']"
+  :key="network"
+  :network="network"
+  :styled="true"
+  class="m-3 p-2 rounded-2xl text-black  bg-red-300 hover:bg-red-500 "
+/>
+
           
-          <button
-            class="flex items-center justify-center size-9 rounded-full  bg-white text-black light:bg-black light:text-white hover:text-red-600 hover:bg-red-300 transition-all"
-          >
-            <Icon
-                icon="mynaui:heart-solid"
-                width="24"
-                height="24"
-                
-            />
-          </button>
+        
         </div>
       </div>
     </div>

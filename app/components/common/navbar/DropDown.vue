@@ -48,25 +48,7 @@ const items = computed(() => {
         to: "/gallery",
       },
     ],
-    [
-      {
-        label: "Artists",
-        icon: "i-lucide-palette",
-        to: "/artists/all",
-      },
-      {
-        label: "Auctions",
-        icon: "i-lucide-gavel",
-        to: "/auctions",
-      },
-    ],
-    [
-      {
-        label: "Search",
-        icon: "i-lucide-search",
-        disabled: false, // Enable when search is ready
-      },
-    ],
+   
     [
       {
         label: "Sign out",
