@@ -2,9 +2,21 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-   nitro: {
-    preset: 'vercel'
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.baseUrl,
+      googleClientId: process.env.GOOGLE_CLIENT_ID! ,
+    },
+    betterAuthUrl: process.env.baseUrl,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   },
+  socialShare: {
+    baseUrl: process.env.baseUrl
+},
+  nitro: {
+    preset: "vercel",
+  },
+  ssr: false,
   compatibilityDate: "2025-07-15",
   devtools: {
     enabled: true,
@@ -21,8 +33,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-mongoose",
     "@stefanobartoletti/nuxt-social-share",
-    '@nuxt/fonts',
-    
+    "@nuxt/fonts",
   ],
   vite: {
     plugins: [tailwindcss()],
@@ -30,16 +41,8 @@ export default defineNuxtConfig({
   mongoose: {
     uri: process.env.MONGODB_URI,
     options: {},
-    modelsDir: 'models',
+    modelsDir: "models",
     devtools: true,
   },
-  runtimeConfig: {
-  public: {
-    siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  }
-},
-socialShare: {
-  baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-},
- 
+  
 });

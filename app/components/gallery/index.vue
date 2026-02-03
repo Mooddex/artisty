@@ -5,7 +5,7 @@
 
 <template class="bg-background-light dark:bg-background-dark font-display text-[#1c0d0d] dark:text-white transition-colors duration-200">
   <div class="flex justify-center flex-1 w-full py-8 md:py-12 px-4 md:px-10">
-    <div class="flex flex-col w-full max-w-[1280px] gap-8">
+    <div class="flex flex-col w-full max-w-7xl gap-8">
       <!-- Page Heading & Filters -->
       <div class="flex flex-col gap-6">
         <div class="flex flex-wrap justify-between items-end gap-4">

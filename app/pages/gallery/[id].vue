@@ -37,10 +37,7 @@ useSeoMeta({
   <div class="p-6">
     <div v-if="isLoading" class="text-center text-lg">Loading...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
-    <div
-      v-else-if="art"
-      class="max-w-4xl mx-auto flex flex-col md:flex-row gap-6"
-    >
+    <div v-else-if="art" class="mx-auto flex flex-col md:flex-row gap-6">
       <!-- Image section -->
       <div class="shrink-0 md:w-1/2">
         <img
@@ -53,12 +50,6 @@ useSeoMeta({
       <!-- Info section -->
       <div class="flex-1 flex flex-col gap-4">
         <h1 class="text-2xl font-bold">{{ art.title }}</h1>
-        <div
-          v-if="art.description"
-          class="prose prose-sm dark:prose-invert max-w-none"
-          v-html="sanitizeHtml(art.description)"
-        ></div>
-
         <p class="text-gray-600 dark:text-gray-300 text-lg">
           by {{ art.artist_title || "Unknown Artist" }}
         </p>
@@ -75,13 +66,17 @@ useSeoMeta({
             {{ art.dimensions || "Unknown" }}
           </p>
         </div>
-
         <div class="mt-4">
           <h2 class="font-semibold text-lg">Place of Origin:</h2>
           <p class="text-gray-500 dark:text-gray-400">
             {{ art.place_of_origin || "Unknown" }}
           </p>
         </div>
+        <div
+          v-if="art.description"
+          class="prose prose-sm dark:prose-invert"
+          v-html="sanitizeHtml(art.description)"
+        ></div>
 
         <div class="mt-6 flex items-center gap-3">
           <SocialShare

@@ -19,7 +19,6 @@ export const useAuth = () => {
         provider: "google",
         callbackURL: "/profile"
       });
-      console.log(user)
       toast.add({ title: "Success", description: "Logged in with Google" });
     } catch (error) {
       toast.add({
