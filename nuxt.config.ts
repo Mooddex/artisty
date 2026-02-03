@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   },
   socialShare: {
-    baseUrl: process.env.mainUrl,
+    baseUrl: process.env.BETTER_AUTH_URL,
 },
   nitro: {
     preset: "vercel",
