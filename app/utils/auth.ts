@@ -5,7 +5,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 const config = useRuntimeConfig();
 export const auth = betterAuth({
   database: mongodbAdapter(client.db()),
- baseURL: process.env.BETTER_AUTH_URL,
+ baseURL: config.public.betterAuthUrl,
   socialProviders: {
     google: {
       clientId: config.public.googleClientId ,

@@ -4,13 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      baseUrl: process.env.baseUrl,
+      baseUrl: process.env.BETTER_AUTH_URL,
       googleClientId: process.env.GOOGLE_CLIENT_ID! ,
+      betterAuthUrl: process.env.BETTER_AUTH_URL
     },
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   },
   socialShare: {
-    baseUrl: process.env.baseUrl
+    baseUrl: process.env.BETTER_AUTH_URL
 },
   nitro: {
     preset: "vercel",
