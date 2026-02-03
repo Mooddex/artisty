@@ -6,6 +6,10 @@ const config = useRuntimeConfig();
 export const auth = betterAuth({
   database: mongodbAdapter(client.db()),
  baseURL: config.public.betterAuthUrl,
+  trustedOrigins: [
+    'http://localhost:3000',
+    'https://artisty-mu.vercel.app',
+  ],
   socialProviders: {
     google: {
       clientId: config.public.googleClientId ,
