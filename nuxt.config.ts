@@ -7,7 +7,6 @@ export default defineNuxtConfig({
       baseUrl: process.env.baseUrl,
       googleClientId: process.env.GOOGLE_CLIENT_ID! ,
     },
-    betterAuthUrl: process.env.baseUrl,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   },
   socialShare: {
