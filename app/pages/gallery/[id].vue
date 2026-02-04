@@ -6,7 +6,10 @@ const store = useArtStore();
 const { art, isLoading, error } = storeToRefs(store);
 const url = useRequestURL();
 
-await store.getSingleArt(route.params.id);
+await useAsyncData(
+  `art-${route.params.id}`,
+  () => store.getSingleArt(route.params.id)
+)
 // helper to get image URL
 const getImageUrl = (imageId) =>
   imageId
