@@ -1,6 +1,6 @@
 <script setup>
 const store = useArtStore();
-const { art, isLoading, error } = store();
+const { art, isLoading, error } = storeToRefs(store);
 const route = useRoute();
 await useAsyncData(`art-${route.params.id}`, () =>
   store.getSingleArt(route.params.id),

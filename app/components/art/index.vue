@@ -1,7 +1,10 @@
 <script setup>
 
-defineProps({
-   art: Object,
+
+const {art} = defineProps({
+  art:{
+    type:Object, required:true
+  }
 })
 const url = useRequestURL();
 const route = useRoute();
