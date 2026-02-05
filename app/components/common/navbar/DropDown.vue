@@ -2,7 +2,7 @@
 const { user, isLoggedIn, signOut } = useAuth();
 
 const items = computed(() => {
-  if (!isLoggedIn) {
+  if (!isLoggedIn.value) {
     return [
       [
         {
@@ -53,7 +53,7 @@ const items = computed(() => {
       {
         label: "Sign out",
         icon: "i-lucide-log-out",
-        click: () => signOut,
+        onClick: () => signOut(),
       },
     ],
   ];
