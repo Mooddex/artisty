@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="mt-6 flex w-full  gap-3">
+  <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  w-full ">
     <SocialShare
       v-for="network in ['facebook', 'x', 'linkedin', 'email']"
       :key="network"

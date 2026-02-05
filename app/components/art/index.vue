@@ -1,5 +1,4 @@
 <script setup>
-import SocialShare from '../common/socialShare.vue';
 
 defineProps({
    art: Object,
@@ -88,7 +87,7 @@ useHead({
           v-html="sanitizeHtml(art.description)"
         ></div>
         
-        <SocialShare />
+        <CommonSocialShare />
 
        
       </div>
