@@ -17,7 +17,7 @@ export const useAuth = () => {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "https://artisty-mu.vercel.app/profile"
+        callbackURL: "/profile"
       });
       
     } catch (error) {
