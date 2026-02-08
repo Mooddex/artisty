@@ -22,7 +22,7 @@ const getImageUrl = (imageId) =>
         <div
           class="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-black/60 backdrop-blur-md"
         >
-          <p class="text-xs font-bold text-white tracking-wide">12h left</p>
+          <p class="text-xs font-bold text-green-300 tracking-wide">{{ art.id > 1000 ? "Privet"  : art.id}} $</p>
         </div>
       </div>
       <div class="flex flex-col gap-3 px-1 pb-1">

@@ -1,10 +1,9 @@
 <script setup>
 
-
 </script>
 
 <template>
   <div>
-  <ArtGallery />
+my shop cart             
   </div>
 </template>
