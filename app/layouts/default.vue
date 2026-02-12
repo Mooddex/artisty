@@ -3,9 +3,7 @@
 <template>
   <div>
     <CommonNavbar />
-    <main class="flex flex-col min-h-screen">
-      <slot />
-    </main>
-    <CommonFooterMain />
+    <NuxtPage />
+    <CommonFooter />
   </div>
 </template>

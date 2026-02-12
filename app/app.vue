@@ -1,14 +1,10 @@
 <script setup></script>
 
 <template>
-  <main class="min-h-screen">
      <UApp>
    <UMain>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <NuxtLayout/>
     </UMain>
   </UApp>
-  </main>
  
-</template>∆
+</template>

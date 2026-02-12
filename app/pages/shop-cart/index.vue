@@ -3,7 +3,5 @@
 </script>
 
 <template>
-  <div>
-    artist id            
-  </div>
+ <ShopCartPage />
 </template>

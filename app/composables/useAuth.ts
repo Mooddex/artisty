@@ -7,9 +7,9 @@ export const useAuth = () => {
   const session = authClient.useSession();
   const user = computed(() => session.value?.data?.user ?? null);
   const isLoggedIn = computed(() => !!user.value);
-  const isLoading = computed(() => session.value?.isPending ?? false);
+  const isLoading = computed(() => session.value?.isPending );
   const status = computed(() =>
-    isLoggedIn.value ? "Logged In" : "Not Logged In",
+    isLoggedIn.value 
   );
 
   // Actions

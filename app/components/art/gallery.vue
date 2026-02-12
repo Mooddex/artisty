@@ -18,7 +18,7 @@
         <!-- Chips / Filter Categories -->
       </div>
       <!-- Art Grid -->
-      <ArtsGrid />
+      <ArtGrid />
       <!-- Load More -->
     </div>
   </div>

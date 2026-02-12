@@ -1,61 +1,46 @@
 <script setup lang="ts">
 const { user, isLoggedIn, signOut } = useAuth();
-
 const items = computed(() => {
-  if (!isLoggedIn.value) {
-    return [
-      [
-        {
-          label: "Sign In",
-          icon: "i-lucide-log-in",
-          to: "/login",
-        },
-        {
-          label: "Sign Up",
-          icon: "i-lucide-user-plus",
-          to: "/signup",
-        },
-      ],
-      [
-        {
-          label: "Discover",
-          icon: "i-lucide-compass",
-          to: "/gallery",
-        },
-      ],
-    ];
-  }
-
   return [
     [
-      {
-        label: user?.value?.name || "Guest",
-        avatar: {
-          src: user?.value?.image || "https://github.com/benjamincanac.png",
-        },
-        type: "label",
-      },
-    ],
-    [
-      {
-        label: "Profile",
-        icon: "i-lucide-user",
-        to: "/profile",
-      },
       {
         label: "Discover",
         icon: "i-lucide-compass",
         to: "/gallery",
       },
-    ],
-   
-    [
       {
-        label: "Sign out",
-        icon: "i-lucide-log-out",
-        onClick: () => signOut(),
+        label: user?.value?.name || "Guest",
+        avatar: {
+          src: user?.value?.image || "https://github.com/benjamincanac.png",
+        },
+        type: "button",
+        to: "/profile",
       },
     ],
+    ...(isLoggedIn.value
+      ? [
+          [
+            {
+              label: "Sign out",
+              icon: "i-lucide-log-out",
+              onClick: () => signOut(),
+            },
+          ],
+        ]
+      : [
+          [
+            {
+              label: "Sign In",
+              icon: "i-lucide-log-in",
+              to: "/login",
+            },
+            {
+              label: "Sign Up",
+              icon: "i-lucide-user-plus",
+              to: "/signup",
+            },
+          ],
+        ]),
   ];
 });
 </script>

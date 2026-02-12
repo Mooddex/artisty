@@ -14,7 +14,7 @@ await useAsyncData(`art-${route.params.id}`, () =>
     <div v-else-if="art" 
     class=""
     >
-      <Art :art="art" />
+      <ArtPage :art="art" />
       
     </div>
   </div>
