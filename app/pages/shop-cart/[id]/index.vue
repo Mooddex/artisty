@@ -1,9 +1,9 @@
 <script setup>
-  
+
 </script>
 
 <template>
-  <div >
-all artists
+  <div>
+   <ShopCart />         
   </div>
 </template>

@@ -15,7 +15,7 @@ export const useArtStore = defineStore("artStore", () => {
 
   // actions
   async function getArt(
-    { page = 1, limit = 20 }: { page?: number; limit?: number } = {}
+    { page = 2, limit = 30 }: { page?: number; limit?: number } = {}
   ): Promise<void> {
     isLoading.value = true;
     error.value = null;

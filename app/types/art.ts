@@ -5,6 +5,7 @@ export interface Art {
   image_id: string | null;
   artist_title: string | null;
   date_display: string | null;
+  quantity ?:number ;
 }
 
 export interface Pagination {

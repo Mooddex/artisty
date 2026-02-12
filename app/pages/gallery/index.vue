@@ -1,11 +1,10 @@
 <script setup>
-import Index from '~/components/gallery/index.vue';
 
 
 </script>
 
 <template>
   <div>
-  <Index />
+  <ArtGallery />
   </div>
 </template>

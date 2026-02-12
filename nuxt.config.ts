@@ -33,6 +33,8 @@ export default defineNuxtConfig({
     "nuxt-mongoose",
     "@stefanobartoletti/nuxt-social-share",
     "@nuxt/fonts",
+    'pinia-plugin-persistedstate/nuxt',
+    '@nuxt/icon',
   ],
   vite: {
     plugins: [tailwindcss()],
