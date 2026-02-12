@@ -1,75 +1,100 @@
-# Nuxt Minimal Starter
+# Artisty - Digital Art Marketplace & Auction Platform
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A modern, full-stack web application for discovering, trading, and auctioning digital artwork. Built with cutting-edge technologies and designed for scalability.
 
-## Setup
+**Status:** Active Development (MVP Released)
 
-Make sure to install dependencies:
+---
 
-```bash
-# npm
-npm install
+## 🎯 Project Overview
 
-# pnpm
-pnpm install
+Artisty is a marketplace platform where artists can showcase their work, users can browse and purchase art, and participate in auctions. The application demonstrates modern web development practices with a focus on performance, scalability, and user experience.
 
-# yarn
-yarn install
+---
 
-# bun
-bun install
-```
+## ✨ Current Features (Released)
 
-## Development Server
+### User Authentication & Authorization
+- **OAuth 2.0 Integration** - Google SSO via Better Auth
+- **Secure Session Management** - Server-side session handling with type-safe composables
+- **User Profiles** - Artist and collector profile management
+- **Role-Based Access Control** - Different views for artists, collectors, and admins
 
-Start the development server on `http://localhost:3000`:
+### Art Discovery & Browsing
+- **Dynamic Gallery** - Responsive grid layout with lazy-loaded images (@nuxt/image)
+- **Advanced Filtering** - Filter by category, price range, artist, and more
+- **Smart Search** - Elasticsearch-powered art search capabilities
+- **Sorting Options** - Sort by newest, trending, price, and popularity
 
-```bash
-# npm
-npm run dev
+### E-Commerce
+- **Shopping Cart** - Persistent cart state management with pinia-plugin-persistedstate
+- **Product Pages** - Detailed art information with high-resolution image viewer
+- **Checkout Flow** - Streamlined purchase process (payment integration in progress)
 
-# pnpm
-pnpm dev
+### Auctions
+- **Real-Time Bidding** - Live auction platform for exclusive artwork
+- **Auction Management** - Create, manage, and participate in auctions
 
-# yarn
-yarn dev
+### Performance & UX
+- **Server-Side Rendering (SSR)** - Nuxt 4 for optimal SEO and initial page load
+- **Dark/Light Mode** - Theme toggle with @nuxt/ui
+- **Responsive Design** - Mobile-first approach using Tailwind CSS
+- **Social Sharing** - Share artwork across social platforms
 
-# bun
-bun run dev
-```
+---
 
-## Production
+## 🚀 Planned Features (Q1-Q2 2026)
 
-Build the application for production:
+### Advanced Features
+- [ ] **Payment Gateway Integration** - Stripe/PayPal for secure transactions
+- [ ] **Notification System** - Real-time notifications for bids, messages, and new listings
+- [ ] **Artist Verification** - KYC process for artist accounts
+- [ ] **Commission System** - Artist-to-artist collaboration and commissions
 
-```bash
-# npm
-npm run build
+### Community & Social
+- [ ] **Messaging System** - Direct communication between users
+- [ ] **User Reviews & Ratings** - Reputation system for buyers and sellers
+- [ ] **Follow System** - Follow favorite artists and receive updates
+- [ ] **Collections** - User-curated art collections and wishlists
 
-# pnpm
-pnpm build
+### Analytics & Admin
+- [ ] **Dashboard Analytics** - Sales metrics, traffic insights, user engagement
+- [ ] **Admin Panel** - Content moderation and platform management
+- [ ] **Seller Analytics** - Revenue reports and audience insights for artists
 
-# yarn
-yarn build
+### Technical Enhancements
+- [ ] **API Rate Limiting** - Protection against abuse and DDoS
+- [ ] **Search Optimization** - Faceted search and autocomplete
+- [ ] **Performance Optimization** - Image CDN optimization and caching strategies
+- [ ] **Mobile App** - React Native companion application
 
-# bun
-bun run build
-```
+---
 
-Locally preview production build:
+## 🛠 Tech Stack
 
-```bash
-# npm
-npm run preview
+### Frontend
+- **Framework:** Nuxt 4 (Vue 3)
+- **Styling:** Tailwind CSS 4 with @tailwindcss/vite
+- **UI Components:** @nuxt/ui with @iconify icons
+- **State Management:** Pinia with persistence plugin
+- **Image Optimization:** @nuxt/image (next-gen image formats)
+- **Type Safety:** TypeScript 5.9
 
-# pnpm
-pnpm preview
+### Backend
+- **Runtime:** Node.js with Nitro
+- **Hosting:** Vercel (nitro preset configured)
+- **Database:** MongoDB with Mongoose ODM
+- **Authentication:** Better Auth (OAuth 2.0 support)
+- **Session Management:** Server-side with type-safe composables
 
-# yarn
-yarn preview
+### DevOps & Tooling
+- **Package Manager:** npm/pnpm/yarn/bun
+- **Linting:** ESLint 9
+- **Build Tool:** Vite
+- **Code Quality:** TypeScript strict mode, composable-based architecture
 
-# bun
-bun run preview
-```
+---
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📊 Architecture Highlights
+
+### Scalable Code Organization
