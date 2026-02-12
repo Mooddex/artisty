@@ -44,6 +44,8 @@ useHead({
     }
   ]
 })
+const store = useCartStore();
+
 </script>
 
 <template>
@@ -98,12 +100,14 @@ useHead({
           class="prose prose-sm dark:prose-invert"
           v-html="sanitizeHtml(art.description)"
         ></div>
-         <NuxtLink 
-         :to="`/shop-cart/${art.id}`"
+        <p class="text-green-600"> Price :{{ art.id/2 }} $</p>
+         <button
+         @click="store.addToCart(art)" 
          class="text-white light:text-black place-items-start cursor-pointer bg-violet-900 light:bg-violet-400 w-fit p-2 rounded-2xl hover:bg-violet-600"
          >
-           Buy a Copy -> {{ art.id > 1000 ? "Privet"  : art.id}} $
-          </NuxtLink>
+          Add To Cart
+          </button>
+
         <CommonSocialShare />
 
        

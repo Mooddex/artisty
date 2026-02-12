@@ -3,7 +3,5 @@
 </script>
 
 <template>
-  <div>
-            
-  </div>
+ <ShopCartPage />
 </template>

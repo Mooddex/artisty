@@ -4,6 +4,6 @@
 
 <template>
   <div>
-<Profile />
+<ArtistProfile />
   </div>
 </template>

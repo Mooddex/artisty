@@ -1,7 +1,5 @@
 <script setup>
-import LeftSide from "./LeftSide.vue";
 import Links from "./Links.vue";
-import ActionsBtns from "./ActionsBtns.vue";
 
 
 
@@ -13,9 +11,21 @@ import ActionsBtns from "./ActionsBtns.vue";
   >
     <div class="w-full max-w-7xl px-4 md:px-10 py-3">
       <header class="flex items-center justify-between whitespace-nowrap">
-        <LeftSide />
+        <CommonNavbarLogo />
+        <!--middle links -->
         <Links />
-        <ActionsBtns />
+         <div class="flex gap-3 items-center">
+      <!-- notification -->
+    
+      <!-- shopCart -->
+     <CommonNavbarShopCartBtn />
+      <!-- dropdown  -->
+      <div>
+        <CommonNavbarDropDown />
+      </div>
+      <!-- Color Changer -->
+      <UColorModeSwitch />
+    </div>
       </header>
     </div>
   </div>
