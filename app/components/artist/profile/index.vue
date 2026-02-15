@@ -1,5 +1,5 @@
 <script setup>
-const { user, isLoading } = useAuth();
+const { user, isLoading, session } = useAuth();
 </script>
 
 <template>
@@ -9,7 +9,7 @@ const { user, isLoading } = useAuth();
   </div>
   <div v-else class="relative mx-auto md:max-w-2xl w-full mb-6 mt-16">
     <!-- no user -->
-    <div v-if="!user">
+    <div v-if="!session && !user">
       Not A User Please
       <NuxtLink to="/login" class="text-green-500"> Log In </NuxtLink>
       or
