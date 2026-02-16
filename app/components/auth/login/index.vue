@@ -38,9 +38,13 @@ const schema = z.object({
 type Schema = z.output<typeof schema>
 
 const onSubmit = async ( payload: FormSubmitEvent<Schema>) => {
+ try {
   await authClient.signIn.email(payload.data)
   console.log('Submitted', payload.data)
   router.push('/profile')
+ } catch (error) {
+  console.log(error)
+ } 
 }
 </script>
 

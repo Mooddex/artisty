@@ -4,6 +4,6 @@
 
 <template>
   <div>
-    <ArtistDashboard />     
-  </div>
+    <ArtistDashboardEmpty />
+</div>
 </template>

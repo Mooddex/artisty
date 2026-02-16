@@ -18,7 +18,7 @@ const { user, isLoading, session } = useAuth();
     </div>
     <!-- user -->
     <div v-else class="">
-      <ArtistProfileUser />
+      <LazyArtistProfileUser />
     </div>
   </div>
 </template>
