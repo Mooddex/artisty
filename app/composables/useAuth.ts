@@ -3,7 +3,7 @@ import { authClient } from "@/lib/auth-client";
 export const useAuth = () => {
   const toast = useToast();
   const router = useRouter();
-  
+  const refresh = authClient.getSession()
   const session = authClient.useSession();
   const user = computed(() => session.value?.data?.user ?? null);
   const isLoggedIn = computed(() => !!user.value);
@@ -52,7 +52,7 @@ export const useAuth = () => {
     isLoggedIn,
     isLoading,
     status,
-
+    refresh,
     // Actions
     signInWithGoogle,
     signOut,

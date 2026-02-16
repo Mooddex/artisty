@@ -24,7 +24,7 @@ const { cart, totalUniqueArt, totalPrice, deleteItem } = useCartStore();
           <div v-for="item in cart" :key="item.id" class="h-78 w-60">
             <ArtCard :art="item" />
             <div class=" my-2 text-red-400">
-            {{ item.quantity }}  remaining <button class="mx-2 cursor-pointer bg-red-200 px-3 rounded-full " @click="deleteItem(item.id)"> - </Button>
+            {{ item.quantity }}  remaining <button class="mx-2 cursor-pointer bg-red-200 px-3 rounded-full " @click="deleteItem(item.id)"> Remove</Button>
             </div>
           </div>
         </div>

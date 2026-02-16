@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import * as z from 'zod'
 import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui'
+import { authClient } from '~/lib/auth-client';
 
 const {signInWithGoogle} = useAuth();
+const router = useRouter();
 const fields: AuthFormField[] = [{
   name: 'email',
   type: 'email',
@@ -35,8 +37,14 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>
 
-function onSubmit(payload: FormSubmitEvent<Schema>) {
-  console.log('Submitted', payload)
+const onSubmit = async ( payload: FormSubmitEvent<Schema>) => {
+ try {
+  await authClient.signIn.email(payload.data)
+  console.log('Submitted', payload.data)
+  router.push('/profile')
+ } catch (error) {
+  console.log(error)
+ } 
 }
 </script>
 

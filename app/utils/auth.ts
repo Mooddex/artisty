@@ -10,12 +10,34 @@ export const auth = betterAuth({
     'http://localhost:3000',
     'https://artisty-mu.vercel.app',
   ],
+   emailAndPassword: { 
+    enabled: true, 
+  }, 
   socialProviders: {
     google: {
       clientId: config.public.googleClientId ,
       clientSecret:config.googleClientSecret ,
       accessType: "offline",
       prompt: "select_account consent",
+    },
+  },
+  user:{
+    additionalFields:{
+      bio:{
+        type:"string",
+        required: false,
+        input: true,
+      },
+      location:{
+        type:"string",
+        required: false,
+        input: true,
+      },
+      image:{
+        type:"string",
+        required: false,
+        input: true,
+      },
     },
   },
 });

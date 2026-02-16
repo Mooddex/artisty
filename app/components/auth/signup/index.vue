@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import * as z from "zod";
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
+import { authClient } from "~/lib/auth-client";
 
 //-------
 const {signInWithGoogle} = useAuth();
@@ -45,12 +46,19 @@ const schema = z.object({
 });
 
 type Schema = z.output<typeof schema>;
-
-function onSubmit(payload: FormSubmitEvent<Schema>) {
-  console.log("Signup submitted", payload.data);
+const onSubmit = async (payload: FormSubmitEvent<Schema>) => {
+  try {
+     console.log("Signup submitted", payload.data);
   // Handle signup logic here
   const user = payload.data ;
   console.log(user);
+  await authClient.signUp.email(user)
+  } catch (error) {
+    console.log(error);
+    
+  }
+ 
+
 }
 </script>
 
@@ -64,16 +72,16 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
         title="Create an account"
         description="Sign up to get started."
         icon="i-lucide-user-plus"
-        :submit="{ label: 'Sign up' }"
+        :submit="{ label: 'Sign up', color:'secondary', variant:'subtle'  }"
         @submit="onSubmit"
       >
         <template #description>
           Already have an account?
-          <ULink to="/login" class="text-primary font-medium">Sign in</ULink>.
+          <ULink to="/login" class="text-teal-600 font-medium">Sign in</ULink>.
         </template>
         <template #footer>
           By signing up, you agree to our
-          <ULink to="#" class="text-primary font-medium">Terms of Service</ULink
+          <ULink to="#" class="text-teal-600 font-medium">Terms of Service</ULink
           >.
         </template>
       </UAuthForm>
