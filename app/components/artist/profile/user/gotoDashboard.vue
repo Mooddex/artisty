@@ -25,7 +25,7 @@
     </p>
   </div>
   <button
-    class="relative z-10 whitespace-nowrap bg-transparent hover:bg-teal-600/90 text-white light:text-black font-bold py-3 px-8 rounded-lg shadow-lg shadow-white/20 light:shadow-black/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 group"
+    class="relative z-10 whitespace-nowrap bg-transparent hover:bg-teal-600/90 text-white light:text-black font-bold py-3 px-8 rounded-lg shadow-2xl shadow-white/50 light:shadow-black/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 group"
   >
     <NuxtLink to="/dashboard">Open Creator Dashboard</NuxtLink>
   </button>
