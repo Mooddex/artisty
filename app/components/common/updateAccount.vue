@@ -3,6 +3,13 @@ import * as z from "zod";
 import type { FormSubmitEvent } from "@nuxt/ui";
 import { authClient } from "~/lib/auth-client";
 
+const props = defineProps({
+  user: {
+    type: Object,
+    required: false,
+    default: () => ({}),
+  }
+})
 
 const isSubmitting = ref(false)
 
@@ -19,10 +26,10 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 const state = reactive<Partial<Schema>>({
-  name: '',
-  bio: '',
-  image: '',
-  location: '',
+  name: props.user.name,
+  bio:  props.user.bio,
+  image:  props.user.image,
+  location:  props.user.location,
 });
 
  async function  onSubmit(event: FormSubmitEvent<Schema>) {

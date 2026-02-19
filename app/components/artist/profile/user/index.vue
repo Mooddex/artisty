@@ -1,5 +1,4 @@
 <script setup>
-
 const { user } = useAuth();
 </script>
 
@@ -21,64 +20,54 @@ const { user } = useAuth();
             {{ user.email }}
           </p>
           <div class="flex items-center justify-between mb-6">
-             <p class="text-sm leading-relaxed ">
-            {{ user?.bio || " Tell us about yourself" }}
-          </p>
-          <CommonUpdateAccount  />
+            <p class="text-sm leading-relaxed">
+              {{ user?.bio || "Tell us about yourself" }}
+            </p>
+            <CommonUpdateAccount :user="user" />
           </div>
-         
+
           <div
             class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800"
           >
             <div
               class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"
             >
-              <span class="material-icons text-base text-primary/60"
-                ><Icon
-                  name="uil:calender"
-                  width="24"
-                  height="24"
-                  style="color: #fff"
-              /></span>
-              <span>Joined {{ user.createdAt.toDateString() }}</span>
+              <Icon
+                name="uil:calender"
+                width="24"
+                height="24"
+                style="color: #fff"
+              />
+              <span>Joined {{ new Date(user.createdAt).toDateString() }}</span>
             </div>
             <div
               class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400"
             >
-              <span class="material-icons text-base text-primary/60"
-                ><Icon
-                  name="duo-icons:location"
-                  width="24"
-                  height="24"
-                  style="color: #fff"
-              /></span>
-              <span data-location="Berlin, Germany">{{
-                user?.location || "locationDATA"
-              }}</span>
+              <Icon
+                name="duo-icons:location"
+                width="24"
+                height="24"
+                style="color: #fff"
+              />
+              <span>{{ user?.location || "No location set" }}</span>
             </div>
           </div>
+          
           <div
-            class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100 dark:border-slate-800"
+            class="flex mt-8 pt-6 border-t border-slate-100 dark:border-slate-800"
           >
-            <div class="text-center">
+            <div class="justify-items-center">
               <p class="text-lg font-bold">
-                {{ user?.bought || "number of art bought" }}
+                {{ user?.bought || 0 }}
               </p>
               <p class="text-[10px] uppercase tracking-wider text-slate-500">
                 Masterpieces
               </p>
             </div>
-            <div class="text-center">
-              <p class="text-lg font-bold">
-                {{ user?.likes || "number of liked arts " }}
-              </p>
-              <p class="text-[10px] uppercase tracking-wider text-slate-500">
-                Liked
-              </p>
-            </div>
           </div>
         </div>
       </div>
+      
       <!-- Main Content Area -->
       <div class="grow">
         <!-- Creator CTA Banner -->
@@ -87,6 +76,7 @@ const { user } = useAuth();
         >
           <ArtistProfileUserGotoDashboard />
         </div>
+        
         <!-- Tabs Navigation -->
         <div
           class="flex items-center gap-8 border-b border-slate-200 dark:border-slate-800 mb-8"
@@ -97,30 +87,34 @@ const { user } = useAuth();
             My Collection
           </button>
         </div>
+        
         <!-- Collection Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          <!-- Artwork Card 1 -->
-         
-          <!-- Artwork Card 4 (Placeholder style) -->
+          <!-- Orders Component -->
+          <ArtistProfileUserOrders />
+          
+          <!-- Add More Placeholder -->
           <div
             class="bg-primary/5 rounded-xl border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-8 text-center min-h-[400px]"
           >
             <div class="flex items-center justify-center shadow-sm mb-4">
               <NuxtLink
-              to="/gallery"
+                to="/gallery"
                 class="text-6xl hover:shadow-blue-700 shadow-lg shadow-blue-400"
-                ><Icon name="icon-park:add" width="50" height="50"
-              /></NuxtLink>
+              >
+                <Icon name="icon-park:add" width="50" height="50" />
+              </NuxtLink>
             </div>
             <h4 class="font-bold text-lg mb-2">Add more to your collection</h4>
-            <p class="text-slate-500 text-sm max-w-[200px] mb-6">
+            <p class="text-slate-500 text-sm max-w-50 mb-6">
               Discover thousands of unique artworks from global creators.
             </p>
             <NuxtLink
               to="/gallery"
               class="text-primary font-bold text-sm hover:underline"
-              >Browse Market</NuxtLink
             >
+              Browse Market
+            </NuxtLink>
           </div>
         </div>
       </div>
