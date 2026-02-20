@@ -31,11 +31,12 @@ export const useCartStore = defineStore("cartStore", () => {
 
   const deleteItem =(ArtId:number) => {
     //find the art and then take it our of the cart
+    const index = cart.value.findIndex((item) => item.id === ArtId);
     const item = cart.value.find((item)=>item.id===ArtId);
     if (item?.quantity && item.quantity > 1 ){
       return item.quantity--
     }else{
-      cart.value = cart.value.filter((item)=> item.id !== ArtId) 
+       cart.value.splice(index, 1);
     }
   }
 
