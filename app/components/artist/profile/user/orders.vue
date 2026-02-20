@@ -1,6 +1,6 @@
 <!-- components/ArtistProfile/UserOrders.vue -->
 <template>
-  <template v-if="pending">
+  <template v-if="loading">
     <div v-for="n in 3" :key="n" class="animate-pulse">
       <div class="bg-slate-200 dark:bg-slate-800 rounded-xl h-96"></div>
     </div>
@@ -8,7 +8,7 @@
 
   <template v-else-if="orders && orders.length > 0">
     <div
-      v-for="order in orders"
+      v-for="order in getRecentOrders(3)"
       :key="order.id"
       class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer"
       @click="navigateToOrders"
@@ -17,8 +17,8 @@
       <div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden">
         <div v-if="order.items.length === 1" class="w-full h-full">
           <img
-            v-if="order.items[0].image"
-            :src="`https://www.artic.edu/iiif/2/${order.items[0].image}/full/600,/0/default.jpg`"
+            v-if="order?.items[0]?.image"
+            :src="getItemImageUrl(order.items[0].image, 600)||`${getItemImageUrl(order.items[0].image, 600)}`"
             :alt="order.items[0].title"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             @error="handleImageError"
@@ -38,7 +38,7 @@
           >
             <img
               v-if="item.image"
-              :src="`https://www.artic.edu/iiif/2/${item.image}/full/400,/0/default.jpg`"
+              :src="getItemImageUrl(item.image, 400)||`${getItemImageUrl(item.image, 400)}`"
               :alt="item.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               @error="handleImageError"
@@ -61,13 +61,16 @@
         <div class="absolute top-3 right-3">
           <span
             class="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm"
-            :class="{
-              'bg-green-500/90 text-white': order.status === 'completed',
-              'bg-yellow-500/90 text-white': order.status === 'pending',
-              'bg-red-500/90 text-white': order.status === 'cancelled'
-            }"
+            :class="getStatusColor(order.status)"
           >
             {{ order.status }}
+          </span>
+        </div>
+
+        <!-- Recent Order Badge -->
+        <div v-if="isRecentOrder(order.createdAt)" class="absolute top-3 left-3">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm  text-white">
+            New
           </span>
         </div>
 
@@ -88,7 +91,7 @@
               Order #{{ order.id.slice(0, 8).toUpperCase() }}
             </h3>
             <p class="text-xs text-slate-500 dark:text-slate-400">
-              {{ formatDate(order.createdAt) }}
+              {{ formatOrderDate(order.createdAt, 'short') }}
             </p>
           </div>
           <div class="text-right">
@@ -111,7 +114,7 @@
             <div class="w-8 h-8 rounded overflow-hidden flex-shrink-0 bg-slate-100 dark:bg-slate-800">
               <img
                 v-if="item.image"
-                :src="`https://www.artic.edu/iiif/2/${item.image}/full/100,/0/default.jpg`"
+                :src="getItemImageUrl(item.image, 100)||`${getItemImageUrl(item.image, 100)}`"
                 :alt="item.title"
                 class="w-full h-full object-cover"
                 @error="handleImageError"
@@ -162,7 +165,7 @@
               <div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-slate-200 dark:bg-slate-700">
                 <img
                   v-if="item.image"
-                  :src="`https://www.artic.edu/iiif/2/${item.image}/full/200,/0/default.jpg`"
+                  :src="getItemImageUrl(item.image, 200)||`${getItemImageUrl(item.image, 200)}`"
                   :alt="item.title"
                   class="w-full h-full object-cover"
                   @error="handleImageError"
@@ -199,23 +202,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const router = useRouter()
-const { data: ordersData, pending } = await useFetch('/api/orders')
 
-const orders = computed(() => ordersData.value?.orders || [])
-const expandedOrders = ref(new Set())
+// Use the composable
+const {
+  orders,
+  loading,
+  fetchOrders,
+  getRecentOrders,
+  formatOrderDate,
+  getStatusColor,
+  getItemImageUrl,
+  isRecentOrder
+} = useOrder()
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  })
-}
+// Fetch orders on mount
+await fetchOrders()
 
-const toggleOrderDetails = (orderId) => {
+const expandedOrders = ref<Set<string>>(new Set())
+
+const toggleOrderDetails = (orderId: string): void => {
   if (expandedOrders.value.has(orderId)) {
     expandedOrders.value.delete(orderId)
   } else {
@@ -223,12 +230,12 @@ const toggleOrderDetails = (orderId) => {
   }
 }
 
-const navigateToOrders = () => {
+const navigateToOrders = (): void => {
   router.push('/orders')
 }
 
-const handleImageError = (event) => {
-  const target = event.target
+const handleImageError = (event: Event): void => {
+  const target = event.target as HTMLImageElement
   target.style.display = 'none'
 }
 </script>
@@ -258,5 +265,19 @@ const handleImageError = (event) => {
 
 .max-h-96 {
   max-height: 24rem;
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>

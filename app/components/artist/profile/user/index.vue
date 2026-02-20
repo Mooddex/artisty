@@ -1,5 +1,11 @@
 <script setup>
 const { user } = useAuth();
+
+// Use the composable and fetch orders
+const { orderStats, fetchOrders } = useOrder();
+
+// Fetch orders on mount
+await fetchOrders();
 </script>
 
 <template>
@@ -58,7 +64,7 @@ const { user } = useAuth();
           >
             <div class="justify-items-center">
               <p class="text-lg font-bold">
-                {{ user?.bought || 0 }}
+                {{ orderStats.totalItems }}
               </p>
               <p class="text-[10px] uppercase tracking-wider text-slate-500">
                 Masterpieces
