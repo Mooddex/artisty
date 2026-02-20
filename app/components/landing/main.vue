@@ -5,7 +5,7 @@
 <template>
   <UPageHero
     title="Where Creativity Meets Admiration"
-    description="  The premier place for discovering unique art and discovering  visionary artists."
+    description="  The premier Marketplace for unique art and  visionary artists."
     orientation="horizontal"
   >
     <NuxtImg
