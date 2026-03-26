@@ -119,6 +119,7 @@ The application is built with modern web development best practices, emphasizing
 | **@nuxt/image** | Image optimization & delivery | v2.0.0 |
 | **TypeScript** | Static type checking | v5.9.3 |
 | **@nuxt/icon** | Icon system with Iconify | v2.2.1 |
+| **Cloudinary** | Image upload & transformation service | adopted |
 
 ### Backend Layer
 | Technology | Purpose |
@@ -252,10 +253,31 @@ artisty/
    # Database
    DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/artisty
    
+   # Cloudinary (image upload)
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_UPLOAD_PRESET=your_unsigned_upload_preset
+   
    # Optional: API Keys
    STRIPE_KEY=your_stripe_key
    PAYPAL_KEY=your_paypal_key
    ```
+
+4. **Install Cloudinary utility**
+   ```bash
+   npm install nuxt-cloudinary cloudinary-core cloudinary-vue
+   ```
+
+5. **Register Cloudinary values in `nuxt.config.ts`** (already configured for this repo)
+   - `runtimeConfig.public.cloudinaryCloudName`
+   - `runtimeConfig.public.cloudinaryPreset`
+
+6. **Use the composable** in upload flows:
+   ```ts
+   import { useCloudinary } from '~/app/composables/useCloudinary'
+   const { uploadImage } = useCloudinary()
+   const secureUrl = await uploadImage(file)
+   ```
+
 
 4. **Start development server**
    ```bash
@@ -275,6 +297,23 @@ npm run preview
 
 # Generate static site (if SSG needed)
 npm run generate
+```
+
+---
+
+## ☁️ Cloudinary Integration
+
+This project adds support for Cloudinary image uploads and management via a lightweight composable at `app/composables/useCloudinary.ts`.
+
+- `nuxt.config.ts` provides runtime config for `cloudinaryCloudName` and `cloudinaryPreset`.
+- `app/composables/useCloudinary.ts` uploads files to `https://api.cloudinary.com/v1_1/{cloudName}/image/upload` and returns `secure_url`.
+- Config values are injected via `.env.local` with `CLOUDINARY_CLOUD_NAME` and `CLOUDINARY_UPLOAD_PRESET`.
+
+Sample usage:
+```ts
+import { useCloudinary } from '~/app/composables/useCloudinary'
+const { uploadImage } = useCloudinary()
+const imageUrl = await uploadImage(file)
 ```
 
 ---
