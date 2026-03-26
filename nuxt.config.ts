@@ -6,7 +6,9 @@ export default defineNuxtConfig({
     public: {
       mainUrl: process.env.BETTER_AUTH_URL,
       googleClientId: process.env.GOOGLE_CLIENT_ID! ,
-      betterAuthUrl: process.env.BETTER_AUTH_URL
+      betterAuthUrl: process.env.BETTER_AUTH_URL,
+       cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    cloudinaryPreset: process.env.CLOUDINARY_UPLOAD_PRESET,
     },
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   },
