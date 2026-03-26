@@ -45,5 +45,19 @@ export default defineNuxtConfig({
     modelsDir: "models",
     devtools: true,
   },
+  image: {
+    domains: [
+      'lh3.googleusercontent.com',  // Google OAuth avatars
+      'pbs.twimg.com',              // Twitter/X profile images
+    ],
+  },
+  app: {
+    head: {
+      title: 'Artisty', // default fallback title
+      htmlAttrs: {
+        lang: 'en',
+      },
+    },
+  },
   
 });
