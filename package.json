@@ -21,6 +21,7 @@
     "better-auth": "^1.4.10",
     "eslint": "^9.39.2",
     "nuxt": "^4.2.2",
+    "nuxt-cloudinary": "^0.0.4",
     "nuxt-mongoose": "^1.0.6",
     "pg": "^8.16.3",
     "pinia": "^3.0.4",
